@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scheduled Times Editor</title>
+  </head>
+  <body>
+    <h1>Scheduled Times Editor</h1>
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        padding: 1rem;
+        margin: 1em auto 0 auto;
+      "
+    >
+      <div style="font-size: 22px; margin-left: 2rem; margin-right: 2rem">
+        <h2>Monday</h2>
+        <form action="/update/monday" method="post">
+          {% for time in times["monday"] %}
+          <input type="time" name="monday" value="{{ time }}" required /><br />
+          {% endfor %}
+          <input type="submit" value="Update" />
+        </form>
+      </div>
+      <div style="font-size: 22px; margin-left: 2rem; margin-right: 2rem">
+        <h2>Tuesday</h2>
+        <form action="/update/tuesday" method="post">
+          {% for time in times["tuesday"] %}
+          <input type="time" name="tuesday" value="{{ time }}" required /><br />
+          {% endfor %}
+          <input type="submit" value="Update" />
+        </form>
+      </div>
+      <div style="font-size: 22px; margin-left: 2rem; margin-right: 2rem">
+        <h2>Wednesday</h2>
+        <form action="/update/wednesday" method="post">
+          {% for time in times["wednesday"] %}
+          <input
+            type="time"
+            name="wednesday"
+            value="{{ time }}"
+            required
+          /><br />
+          {% endfor %}
+          <input type="submit" value="Update" />
+        </form>
+      </div>
+      <div style="font-size: 22px; margin-left: 2rem; margin-right: 2rem">
+        <h2>Thursday</h2>
+        <form action="/update/thursday" method="post">
+          {% for time in times["thursday"] %}
+          <input
+            type="time"
+            name="thursday"
+            value="{{ time }}"
+            required
+          /><br />
+          {% endfor %}
+          <input type="submit" value="Update" />
+        </form>
+      </div>
+      <div style="font-size: 22px; margin-left: 2rem; margin-right: 2rem">
+        <h2>Friday</h2>
+        <form action="/update/friday" method="post">
+          {% for time in times["friday"] %}
+          <input type="time" name="friday" value="{{ time }}" required /><br />
+          {% endfor %}
+          <input type="submit" value="Update" />
+        </form>
+      </div>
+      <div style="font-size: 22px; margin-left: 2rem; margin-right: 2rem">
+        <h2>Saturday</h2>
+        <form action="/update/saturday" method="post">
+          {% for time in times["saturday"] %}
+          <input
+            type="time"
+            name="saturday"
+            value="{{ time }}"
+            required
+          /><br />
+          {% endfor %}
+          <input type="submit" value="Update" />
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
