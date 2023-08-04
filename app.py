@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import schedule
 import threading
 import json
+from log import log_time_to_file
 
 app = Flask(__name__)
 
@@ -18,7 +19,7 @@ def save_schedule_to_json():
 
 def task():
     print("This is a scheduled task.")
-    # Add your task's code here
+    log_time_to_file()
 
 
 def update_schedule(day, times):
