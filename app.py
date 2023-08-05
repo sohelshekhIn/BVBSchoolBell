@@ -20,8 +20,6 @@ json_file = path.join(json_file_path, json_file_name)
 with open(json_file) as f:
     weekday_scheduled_times = json.load(f)
 
-log_time_to_file("JSON File Opened")
-
 
 def save_schedule_to_json():
     # Save the scheduled times to schedule.json
