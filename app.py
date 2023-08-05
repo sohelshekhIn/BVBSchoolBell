@@ -2,30 +2,41 @@ from flask import Flask, render_template, request, redirect, url_for
 import schedule
 import threading
 import json
-from log import log_time_to_file
+from jobLogger import log_time_to_file
+from sys import platform
+from os import path, getcwd
 
 app = Flask(__name__)
 
+if platform == "linux":
+    json_file_path = "root/home/BVBSchoolBell"
+elif platform == "win32":
+    json_file_path = getcwd()
+
+json_file_name = "schedule.json"
+json_file = path.join(json_file_path, json_file_name)
+
 # Load the scheduled times from schedule.json on startup
-with open("schedule.json") as f:
+with open(json_file) as f:
     weekday_scheduled_times = json.load(f)
+
+log_time_to_file("JSON File Opened")
 
 
 def save_schedule_to_json():
     # Save the scheduled times to schedule.json
-    with open("schedule.json", "w") as f:
+    with open(json_file, "w") as f:
         json.dump(weekday_scheduled_times, f, indent=4)
 
 
 def task():
     print("This is a scheduled task.")
-    log_time_to_file()
+    log_time_to_file("Task Runned")
 
 
 def update_schedule(day, times):
     # clear only the jobs with tag "test"
     schedule.clear(day)
-    print(day)
     if day == "monday":
         for t in times:
             schedule.every().monday.at(t).do(task).tag(day)
@@ -44,10 +55,6 @@ def update_schedule(day, times):
     elif day == "saturday":
         for t in times:
             schedule.every().saturday.at(t).do(task).tag(day)
-
-    # Schedule new jobs based on updated times
-    # for t in times:
-    #     schedule.every().day.at(t).do(task).tag(day)
 
 
 # set all shedule from weekday shedule time on startup
@@ -77,11 +84,9 @@ def update(day):
     return redirect(url_for("index"))
 
 
-if __name__ == "__main__":
-    # Start a background thread to execute scheduled tasks
-    background_thread = threading.Thread(target=background_thread)
-    background_thread.daemon = True
-    background_thread.start()
-
-    # Run the Flask app
-    app.run(debug=True)
+background_thread = threading.Thread(target=background_thread)
+background_thread.daemon = True
+background_thread.start()
+app.run(
+    debug=True,
+)
