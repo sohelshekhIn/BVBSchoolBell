@@ -160,6 +160,29 @@
           />
         </form>
       </div>
+      <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
+        <form action="/update/sunday" method="post">
+          <h2
+            class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
+          >
+            Sunday
+          </h2>
+          {% for time in times["saturday"] %} {{ loop.index }}.
+          <input
+            class="border-2 rounded-md p-2 m-2"
+            type="time"
+            name="sunday"
+            value="{{ time }}"
+            required
+          /><br />
+          {% endfor %}
+          <input
+            class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
+            type="submit"
+            value="Update"
+          />
+        </form>
+      </div>
     </div>
   </body>
 </html>
