@@ -30,8 +30,9 @@ def save_schedule_to_json():
 
 
 def task():
-    print("This is a scheduled task.")
-    log_time_to_file("Task Runned")
+    # Uncomment this to Ring Actual Bell
+    # start_bell()
+    log_time_to_file("Bell Triggered")
 
 
 def update_schedule(day, times):
