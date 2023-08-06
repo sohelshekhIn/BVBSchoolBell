@@ -5,11 +5,12 @@ import json
 from jobLogger import log_time_to_file
 from sys import platform
 from os import path, getcwd
+from ringBell import start_bell
 
 app = Flask(__name__)
 
 if platform == "linux":
-    file_path = "root/home/BVBSchoolBell"
+    file_path = "/home/Bell"
 elif platform == "win32":
     file_path = getcwd()
 
@@ -56,6 +57,9 @@ def update_schedule(day, times):
     elif day == "saturday":
         for t in times:
             schedule.every().saturday.at(t).do(task).tag(day)
+    elif day == "sunday":
+        for t in times:
+            schedule.every().sunday.at(t).do(task).tag(day)
 
 
 # set all shedule from weekday shedule time on startup
