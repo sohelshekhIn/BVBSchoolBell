@@ -3,7 +3,7 @@ from sys import platform
 from os import path, getcwd
 
 if platform == "linux":
-    log_file_path = "root/home/BVBSchoolBell"
+    log_file_path = "/home/Bell"
 elif platform == "win32":
     log_file_path = getcwd()
 
