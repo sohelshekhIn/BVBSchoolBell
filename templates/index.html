@@ -16,7 +16,21 @@
         class="w-full text-center text-teal-100 font-semibold text-2xl lg:text-3xl"
       >
         <span class="flex flex-col">
-          Lecture Schedule Editor
+          <span>
+            Lecture Schedule Editor
+            <span class="text-base">
+
+              {% if bell_status == "on" %}
+              <span class="p-2 bg-green-500 text-white rounded-full">
+                ON
+              </span>
+              {% else %}
+              <span class="p-2 bg-red-500 text-white rounded-full">
+                OFF
+              </span>
+              {% endif %}
+            </span>
+          </span>
           <span class="text-xs"> by Somya & Sohel </span>
         </span>
       </h1>
@@ -186,21 +200,61 @@
         </div>
       </div>
       <div class="p-10">
-        <h1 class="text-gray-800 font-semibold text-lg lg:text-xl mb-5">
-          History
-          <span
-            class="text-gray-500 text-xs whitespace-nowrap overflow-hidden overflow-ellipsis"
-            >(last 8)</span
-          >
-        </h1>
-        <div class="flex flex-col gap-1">
-          {% for history in histories %}
-          <p
-            class="text-gray-600 font-medium text-md whitespace-nowrap overflow-hidden overflow-ellipsis"
-          >
-            {{ history }}
+        <div class="flex gap-10">
+          <div class="">
+            <h1 class="text-gray-800 font-semibold text-lg lg:text-xl mb-5">
+              History
+              <span
+                class="text-gray-500 text-xs whitespace-nowrap overflow-hidden overflow-ellipsis"
+                >(last 8)</span
+              >
+            </h1>
+            <div class="flex flex-col gap-1">
+              {% for history in histories %}
+              <p
+                class="text-gray-600 font-medium text-md whitespace-nowrap overflow-hidden overflow-ellipsis"
+              >
+                {{ history }}
+              </p>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="">
+            <!-- Turn On/Off Bell -->
+            <h1 class="text-gray-800 font-semibold text-lg lg:text-xl mb-5">
+              Scheduler
+            </h1>
+          <!-- current bell status -->
+
+          <p class="text-gray-600 font-medium text-md whitespace-nowrap overflow-hidden overflow-ellipsis py-2 mb-2">
+            Status: 
+            {% if bell_status == "on" %}
+              On
+              {% else %}
+              Off
+              {% endif %}
           </p>
-          {% endfor %}
+              {% if bell_status == "on" %}
+              <form action="/bell/off" method="post">
+                <button
+                  class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
+                  type="submit"
+                >Turn Off</button>  
+              </form>
+            {% else %}
+            <form action="/bell/on" method="post">
+                <!-- if bell_status is off then only show this -->
+                  
+                <button
+                  class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
+                  type="submit"
+                >
+                Turn On
+                </button>
+              </form>
+            {% endif %}
+              
+            
         </div>
       </div>
     </div>

@@ -16,8 +16,10 @@ elif platform == "win32":
 
 json_file_name = "schedule.json"
 log_file_name = "history.log"
+settings_file_name = "status.json"
 log_file = path.join(file_path, log_file_name)
 json_file = path.join(file_path, json_file_name)
+settings_file_name = path.join(file_path, settings_file_name)
 
 # Load the scheduled times from schedule.json on startup
 with open(json_file) as f:
@@ -31,8 +33,13 @@ def save_schedule_to_json():
 
 
 def task():
+    with open(settings_file_name) as f:
+        settings = json.load(f)
+    if settings["status"] == "off":
+        log_time_to_file("Trigger cancelled")
+        return
     # Uncomment this to Ring Actual Bell
-    # start_bell()
+    start_bell()
     log_time_to_file("Bell Triggered")
 
 
@@ -79,9 +86,15 @@ def index():
     with open(log_file, "r") as f:
         # get only the last 8 lines
         history = f.readlines()[-8:]
-    print(history)
+    # load settings from settings.json
+    with open(settings_file_name) as f:
+        settings = json.load(f)
+
     return render_template(
-        "index.html", times=weekday_scheduled_times, histories=history
+        "index.html",
+        times=weekday_scheduled_times,
+        histories=history,
+        bell_status=settings["status"],
     )
 
 
@@ -93,6 +106,28 @@ def update(day):
     update_schedule(day, times)
     # Save the changes to schedule.json
     save_schedule_to_json()
+    return redirect(url_for("index"))
+
+
+# if /bell/off is called, set status to off
+@app.route("/bell/off", methods=["POST"])
+def bell_off():
+    with open(settings_file_name) as f:
+        settings = json.load(f)
+    settings["status"] = "off"
+    with open(settings_file_name, "w") as f:
+        json.dump(settings, f, indent=4)
+    return redirect(url_for("index"))
+
+
+# if /bell/on is called, set status to on
+@app.route("/bell/on", methods=["POST"])
+def bell_on():
+    with open(settings_file_name) as f:
+        settings = json.load(f)
+    settings["status"] = "on"
+    with open(settings_file_name, "w") as f:
+        json.dump(settings, f, indent=4)
     return redirect(url_for("index"))
 
 
