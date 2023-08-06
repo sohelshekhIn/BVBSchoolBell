@@ -21,167 +21,187 @@
         </span>
       </h1>
     </div>
-    <div class="flex flex-wrap flex-row mt-10">
-      <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
-        <form class="p-3" action="/update/monday" method="post">
-          <h2
-            class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
-          >
-            Monday
-          </h2>
-          {% for time in times["monday"] %} {{ loop.index }}.
-          <input
-            class="border-2 rounded-md p-2 m-2"
-            type="time"
-            name="monday"
-            value="{{ time }}"
-            required
-          /><br />
-          {% endfor %}
-          <input
-            class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
-            type="submit"
-            value="Update"
-          />
-        </form>
+    <div class="flex flex-col">
+      <div class="flex flex-wrap flex-row mt-10">
+        <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
+          <form class="p-3" action="/update/monday" method="post">
+            <h2
+              class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
+            >
+              Monday
+            </h2>
+            {% for time in times["monday"] %} {{ loop.index }}.
+            <input
+              class="border-2 rounded-md p-2 m-2"
+              type="time"
+              name="monday"
+              value="{{ time }}"
+              required
+            /><br />
+            {% endfor %}
+            <input
+              class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
+              type="submit"
+              value="Update"
+            />
+          </form>
+        </div>
+        <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
+          <form action="/update/tuesday" method="post">
+            <h2
+              class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
+            >
+              Tuesday
+            </h2>
+            {% for time in times["tuesday"] %} {{ loop.index }}.
+            <input
+              class="border-2 rounded-md p-2 m-2"
+              type="time"
+              name="tuesday"
+              value="{{ time }}"
+              required
+            /><br />
+            {% endfor %}
+            <input
+              class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
+              type="submit"
+              value="Update"
+            />
+          </form>
+        </div>
+        <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
+          <form action="/update/wednesday" method="post">
+            <h2
+              class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
+            >
+              Wednesday
+            </h2>
+            {% for time in times["wednesday"] %} {{ loop.index }}.
+            <input
+              class="border-2 rounded-md p-2 m-2"
+              type="time"
+              name="wednesday"
+              value="{{ time }}"
+              required
+            /><br />
+            {% endfor %}
+            <input
+              class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
+              type="submit"
+              value="Update"
+            />
+          </form>
+        </div>
+        <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
+          <form action="/update/thursday" method="post">
+            <h2
+              class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
+            >
+              Thursday
+            </h2>
+            {% for time in times["thursday"] %} {{ loop.index }}.
+            <input
+              class="border-2 rounded-md p-2 m-2"
+              type="time"
+              name="thursday"
+              value="{{ time }}"
+              required
+            /><br />
+            {% endfor %}
+            <input
+              class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
+              type="submit"
+              value="Update"
+            />
+          </form>
+        </div>
+        <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
+          <form action="/update/friday" method="post">
+            <h2
+              class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
+            >
+              Friday
+            </h2>
+            {% for time in times["friday"] %} {{ loop.index }}.
+            <input
+              class="border-2 rounded-md p-2 m-2"
+              type="time"
+              name="friday"
+              value="{{ time }}"
+              required
+            /><br />
+            {% endfor %}
+            <input
+              class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
+              type="submit"
+              value="Update"
+            />
+          </form>
+        </div>
+        <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
+          <form action="/update/saturday" method="post">
+            <h2
+              class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
+            >
+              Saturday
+            </h2>
+            {% for time in times["saturday"] %} {{ loop.index }}.
+            <input
+              class="border-2 rounded-md p-2 m-2"
+              type="time"
+              name="saturday"
+              value="{{ time }}"
+              required
+            /><br />
+            {% endfor %}
+            <input
+              class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
+              type="submit"
+              value="Update"
+            />
+          </form>
+        </div>
+        <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
+          <form action="/update/sunday" method="post">
+            <h2
+              class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
+            >
+              Sunday
+            </h2>
+            {% for time in times["sunday"] %} {{ loop.index }}.
+            <input
+              class="border-2 rounded-md p-2 m-2"
+              type="time"
+              name="sunday"
+              value="{{ time }}"
+              required
+            /><br />
+            {% endfor %}
+            <input
+              class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
+              type="submit"
+              value="Update"
+            />
+          </form>
+        </div>
       </div>
-      <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
-        <form action="/update/tuesday" method="post">
-          <h2
-            class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
+      <div class="p-10">
+        <h1 class="text-gray-800 font-semibold text-lg lg:text-xl mb-5">
+          History
+          <span
+            class="text-gray-500 text-xs whitespace-nowrap overflow-hidden overflow-ellipsis"
+            >(last 8)</span
           >
-            Tuesday
-          </h2>
-          {% for time in times["tuesday"] %} {{ loop.index }}.
-          <input
-            class="border-2 rounded-md p-2 m-2"
-            type="time"
-            name="tuesday"
-            value="{{ time }}"
-            required
-          /><br />
-          {% endfor %}
-          <input
-            class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
-            type="submit"
-            value="Update"
-          />
-        </form>
-      </div>
-      <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
-        <form action="/update/wednesday" method="post">
-          <h2
-            class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
+        </h1>
+        <div class="flex flex-col gap-1">
+          {% for history in histories %}
+          <p
+            class="text-gray-600 font-medium text-md whitespace-nowrap overflow-hidden overflow-ellipsis"
           >
-            Wednesday
-          </h2>
-          {% for time in times["wednesday"] %} {{ loop.index }}.
-          <input
-            class="border-2 rounded-md p-2 m-2"
-            type="time"
-            name="wednesday"
-            value="{{ time }}"
-            required
-          /><br />
+            {{ history }}
+          </p>
           {% endfor %}
-          <input
-            class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
-            type="submit"
-            value="Update"
-          />
-        </form>
-      </div>
-      <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
-        <form action="/update/thursday" method="post">
-          <h2
-            class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
-          >
-            Thursday
-          </h2>
-          {% for time in times["thursday"] %} {{ loop.index }}.
-          <input
-            class="border-2 rounded-md p-2 m-2"
-            type="time"
-            name="thursday"
-            value="{{ time }}"
-            required
-          /><br />
-          {% endfor %}
-          <input
-            class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
-            type="submit"
-            value="Update"
-          />
-        </form>
-      </div>
-      <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
-        <form action="/update/friday" method="post">
-          <h2
-            class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
-          >
-            Friday
-          </h2>
-          {% for time in times["friday"] %} {{ loop.index }}.
-          <input
-            class="border-2 rounded-md p-2 m-2"
-            type="time"
-            name="friday"
-            value="{{ time }}"
-            required
-          /><br />
-          {% endfor %}
-          <input
-            class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
-            type="submit"
-            value="Update"
-          />
-        </form>
-      </div>
-      <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
-        <form action="/update/saturday" method="post">
-          <h2
-            class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
-          >
-            Saturday
-          </h2>
-          {% for time in times["saturday"] %} {{ loop.index }}.
-          <input
-            class="border-2 rounded-md p-2 m-2"
-            type="time"
-            name="saturday"
-            value="{{ time }}"
-            required
-          /><br />
-          {% endfor %}
-          <input
-            class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
-            type="submit"
-            value="Update"
-          />
-        </form>
-      </div>
-      <div class="w-70vh mx-auto p-5 sm:w-fit flex flex-col items-center">
-        <form action="/update/sunday" method="post">
-          <h2
-            class="w-full text-center text-gray-800 font-semibold text-xl lg:text-2xl mb-5"
-          >
-            Sunday
-          </h2>
-          {% for time in times["sunday"] %} {{ loop.index }}.
-          <input
-            class="border-2 rounded-md p-2 m-2"
-            type="time"
-            name="sunday"
-            value="{{ time }}"
-            required
-          /><br />
-          {% endfor %}
-          <input
-            class="px-3 py-2 w-full bg-amber-400 text-white rounded-md hover:bg-amber-500"
-            type="submit"
-            value="Update"
-          />
-        </form>
+        </div>
       </div>
     </div>
   </body>

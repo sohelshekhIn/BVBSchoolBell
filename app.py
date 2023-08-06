@@ -9,12 +9,14 @@ from os import path, getcwd
 app = Flask(__name__)
 
 if platform == "linux":
-    json_file_path = "root/home/BVBSchoolBell"
+    file_path = "root/home/BVBSchoolBell"
 elif platform == "win32":
-    json_file_path = getcwd()
+    file_path = getcwd()
 
 json_file_name = "schedule.json"
-json_file = path.join(json_file_path, json_file_name)
+log_file_name = "history.log"
+log_file = path.join(file_path, log_file_name)
+json_file = path.join(file_path, json_file_name)
 
 # Load the scheduled times from schedule.json on startup
 with open(json_file) as f:
@@ -68,7 +70,14 @@ def background_thread():
 
 @app.route("/")
 def index():
-    return render_template("index.html", times=weekday_scheduled_times)
+    # load history.log
+    with open(log_file, "r") as f:
+        # get only the last 8 lines
+        history = f.readlines()[-8:]
+    print(history)
+    return render_template(
+        "index.html", times=weekday_scheduled_times, histories=history
+    )
 
 
 @app.route("/update/<string:day>", methods=["POST"])
@@ -85,6 +94,4 @@ def update(day):
 background_thread = threading.Thread(target=background_thread)
 background_thread.daemon = True
 background_thread.start()
-app.run(
-    debug=True,
-)
+app.run()
