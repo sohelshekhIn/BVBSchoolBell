@@ -1,5 +1,8 @@
+# School Bell Automation - IOT Project
+
 ## Description:
-A Flask web application for scheduling and triggering bell rings. The schedule is loaded from schedule.json, and the ringing status is controlled by user interactions.
+A Flask web application for scheduling and triggering school bell over the internet connected with a Rasberry Pi (also my small server 😜). The schedule is loaded from schedule.json, and the ringing status is controlled by user interactions.
+The interactive protected web page to control the timings and status of the bell with HTML and Tailwind CSS
 
 ## Steps:
 
